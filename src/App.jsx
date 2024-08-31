@@ -20,7 +20,7 @@ import Profile from './Profile';
 function App() {
   const liff = window.liff;
   console.log("liff,", liff)
-
+  const [isLiffReady, setIsLiffReady] = useState(false);
   const [inputValues, setInputValues] = useState({
     Service: '',
     Name: '',
@@ -45,7 +45,9 @@ function App() {
   
     initializeLiff();
   }, []);
-
+  if (!isLiffReady) {
+    return <div>Loading...</div>;
+  }
   return (
     <Router>
       <Routes>
