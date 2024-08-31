@@ -30,18 +30,19 @@ function App() {
   useEffect(() => {
     const initializeLiff = async () => {
       try {
-        await liff.init({ liffId: '2005869975-nMZOOGBm' });
-        if (liff.isLoggedIn()) {
-          const profile = await liff.getProfile();
-          console.log('profile', profile)
+        if (!window.liff) throw new Error('LIFF SDK is not loaded');
+        await window.liff.init({ liffId: '2005869975-nMZOOGBm' });
+        if (window.liff.isLoggedIn()) {
+          const profile = await window.liff.getProfile();
+          console.log('profile', profile);
         } else {
-          liff.login();
+          window.liff.login();
         }
       } catch (err) {
-        console.error(err);
+        console.error('Error initializing LIFF:', err);
       }
     };
-
+  
     initializeLiff();
   }, []);
 
