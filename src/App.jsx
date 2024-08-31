@@ -48,9 +48,9 @@ function App() {
 
     initializeLiff();
   }, []);
-  if (!isLiffReady) {
-    return <div>Loading...</div>;
-  }
+  // if (!isLiffReady) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <Router>
       <Routes>
