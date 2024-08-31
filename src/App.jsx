@@ -14,12 +14,12 @@ import Profile from './Profile';
 
 
 
-const liff = window.liff;
 
 
 
 function App() {
-  console.log(liff)
+  const liff = window.liff;
+  console.log("liff,", liff)
 
   const [inputValues, setInputValues] = useState({
     Service: '',
