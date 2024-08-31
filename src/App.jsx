@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
 import Page1 from './Page1';
 import Page2 from './Page2';
@@ -27,30 +27,24 @@ function App() {
     Nickname: '',
     Tel: ''
   });
-  const [isLiffReady, setIsLiffReady] = useState(false);
-
   useEffect(() => {
     const initializeLiff = async () => {
       try {
-        if (!window.liff) throw new Error('LIFF SDK is not loaded');
-        await window.liff.init({ liffId: '2005869975-nMZOOGBm' });
-        if (window.liff.isLoggedIn()) {
-          const profile = await window.liff.getProfile();
-          console.log('profile', profile);
+        await liff.init({ liffId: '2005869975-nMZOOGBm' });
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
+          console.log('profile', profile)
         } else {
-          window.liff.login();
+          liff.login();
         }
-        setIsLiffReady(true);
       } catch (err) {
-        console.error('Error initializing LIFF:', err);
+        console.error(err);
       }
     };
 
     initializeLiff();
   }, []);
-  // if (!isLiffReady) {
-  //   return <div>Loading...</div>;
-  // }
+
   return (
     <Router>
       <Routes>
