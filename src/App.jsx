@@ -42,7 +42,7 @@ function App() {
       }
     };
 
-    initializeLiff();
+    // initializeLiff();
   }, []);
 
   return (
