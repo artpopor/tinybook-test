@@ -38,6 +38,8 @@ function App() {
         } else {
           window.liff.login();
         }
+        setIsLiffReady(true);
+
       } catch (err) {
         console.error('Error initializing LIFF:', err);
       }
